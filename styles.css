@@ -3,28 +3,151 @@
     margin: 0;
     padding: 0;
     font-family: sans-serif;
+    font-size: 16px;
 }
 
 body {
-    background-color: darkslateblue;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+header {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    border-bottom: solid 1px black;
+    margin-bottom: 10px;
+    padding: 15px 0;;
+}
+
+header h1 {
+    grid-column: 2 / 3;
+}
+
+header button {
+    justify-self: end;
+    margin-right: 10px;
+    cursor: pointer;
 }
 
 #container {
     width: 900px;
     height: 600px;
     max-width: 90%;
-    border: 1px solid black;
     display: flex;
+    align-items: baseline;
 }
 
 .card {
     border: 1px solid black;
     background-color: cornflowerblue;
+    display: grid;
+    grid-template: 1fr 1fr 1fr / 1fr min-content;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+    padding: 0 10px;
 }
 
-.read {
+.card p {
+    grid-area: 3 / 1 / 4 / 2;
+}
 
+.card button {
+    outline: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+    justify-self: end;
+}
+
+.card div {
+    grid-area: 3 / 2 / 4 / 3;
+}
+
+.card .true {
+    color: green;
+}
+
+#popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    z-index: 10;
+    background-color: rgb(110, 105, 105);
+    border-radius: 10px;
+}
+
+#popup.active {
+    transform: translate(-50%, -50%) scale(1);
+
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, .5);
+    pointer-events: none;
+    transition: 200ms ease-in-out;
+}
+
+#overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+#form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+.close-button {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background: none;
+    
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 5px;
+}
+
+form div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 5px 0;
+    align-items: center;
+}
+
+form button {
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: none;
+    border: none;
+    cursor: pointer;
+}
+
+input#read {
+    margin-right: 33%;
+}
+
+input {
+    padding: 3px;
 }
