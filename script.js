@@ -1,6 +1,3 @@
-
-const myLibrary = [];
-
 function Book(title, author, pages, read) {
     this.title = title
     this.author = author
@@ -9,6 +6,11 @@ function Book(title, author, pages, read) {
     this.info = title + ' by ' + author + ', ' + pages + ' pages, ' + read
 }
  
+const dune = new Book ('Dune', 'Frank Herbert', '467', true);
+const gay = new Book ('Gay Sex', 'Trey', '6969', true);
+
+const myLibrary = [];
+
 const container = document.querySelector('#container')
 
 function displayBooks() {
@@ -27,15 +29,14 @@ function displayBooks() {
         const div = card.querySelector('div');
         const button = card.querySelector('button');
         h1.textContent = el.title;
-        h2.textContent = el.author;
-        p.textContent = el.pages;
+        h2.textContent = 'By: ' + el.author;
+        p.textContent = el.pages + ' pages';
         div.classList.add(el.read);
-        div.textContent = 'O';
         button.textContent = 'X';
 
         button.addEventListener('click', () => {
             container.removeChild(card);
-            myLibrary.splice(myLibrary.indexOf(card) - 1, 1);
+            myLibrary = myLibrary.splice(myLibrary.indexOf(card) - 1, 1);
         });
 
         div.addEventListener('click', () => {
@@ -88,6 +89,8 @@ submitBtn.addEventListener('click', (event) => {
     author.value = '';
     pages.value = '';
 });
+
+displayBooks();
 
 
 

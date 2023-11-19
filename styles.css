@@ -11,6 +11,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #118AB2;
 }
 
 header {
@@ -21,40 +22,60 @@ header {
     width: 100%;
     border-bottom: solid 1px black;
     margin-bottom: 10px;
-    padding: 15px 0;;
+    padding: 15px 0;
+    background-color: #073B4C;
 }
 
 header h1 {
     grid-column: 2 / 3;
+    font-size: 2rem;
+    color: white;
 }
 
 header button {
     justify-self: end;
     margin-right: 10px;
     cursor: pointer;
+    background-color: #06D6A0;
+    color: white;
+    outline: none;
+    border: none;
+    padding: 5px;
+    border-radius: 10px;
 }
 
 #container {
-    width: 900px;
-    height: 600px;
-    max-width: 90%;
-    display: flex;
-    align-items: baseline;
+    width: 90%;
+    display: grid;
+    justify-content: center;
+    align-content: flex-start;
+    grid-template-columns: repeat(auto-fill, 270px);
+    grid-gap: 10px;
 }
 
 .card {
     border: 1px solid black;
-    background-color: cornflowerblue;
+    background-color: #FFD166;
     display: grid;
-    grid-template: 1fr 1fr 1fr / 1fr min-content;
+    grid-template: 1fr 1fr min-content / 1fr min-content;
     align-items: center;
-    width: 150px;
+    min-width: 250px;
     height: 150px;
-    padding: 0 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.card button, .card h2, .card h1 {
+    align-self: flex-start;
+}
+
+.card h1 {
+    font-size: 1.75rem;
 }
 
 .card p {
     grid-area: 3 / 1 / 4 / 2;
+    font-size: .8rem;
 }
 
 .card button {
@@ -67,10 +88,15 @@ header button {
 
 .card div {
     grid-area: 3 / 2 / 4 / 3;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+
 }
 
-.card .true {
-    color: green;
+.card div.true {
+    background-color: green;
 }
 
 #popup {
@@ -80,8 +106,10 @@ header button {
     transform: translate(-50%, -50%) scale(0);
     transition: 200ms ease-in-out;
     z-index: 10;
-    background-color: rgb(110, 105, 105);
+    background-color: #06D6A0;
     border-radius: 10px;
+    padding: 10px;
+    color: white;
 }
 
 #popup.active {
@@ -110,8 +138,7 @@ header button {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 5px;
-    padding-left: 5px;
+    margin-bottom: 10px;
 }
 
 .close-button {
@@ -125,7 +152,6 @@ header button {
 form {
     display: flex;
     flex-direction: column;
-    padding: 10px 5px;
 }
 
 form div {
