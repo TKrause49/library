@@ -54,9 +54,9 @@ function createCard(el) {
     p.textContent = el.pages + ' pages';
     button.textContent = 'X';
 
-    button.addEventListener('click', () => {
+    button.addEventListener('click', (event) => {
         container.removeChild(card);
-        removeBook();
+        removeBook(event);
     });
 
     div.addEventListener('click', () => {
@@ -82,10 +82,10 @@ const addBook = () => {
   }
 
 const removeBook = (event) => {
-    console.log(event.target);
-    const book = event.target;
-    library.removeBook(book.title)
+    const book = event.currentTarget.parentNode.firstChild.textContent;
+    library.removeBook(book);
     }
+
 
 function displayBooks() {
     container.textContent = '';
@@ -105,9 +105,7 @@ const openPopup = function () {
 }
 
 openPopupBtn.addEventListener('click', () => {openPopup()});
-
 closeBtn.addEventListener('click', () => {closePopup()});
-
 overlay.addEventListener('click', () => {closePopup()});
 
 submitBtn.addEventListener('click', (event) => {
