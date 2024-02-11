@@ -9,6 +9,10 @@ class Book {
     get info() {
         return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
     } 
+
+    toggleRead() {
+        this.read = this.read === true ? false : true;
+    }
 }
 
 class Library {
@@ -59,12 +63,8 @@ function createCard(el) {
         removeBook(event);
     });
 
-    div.addEventListener('click', () => {
-        if (div.classList.contains('true')) {
-            div.classList.remove('true');
-        } else {
-            div.classList.add('true');
-        }
+    div.addEventListener('click', (event) => {
+        toggleRead(event);
     });
 
     card.appendChild(h1);
@@ -86,6 +86,18 @@ const removeBook = (event) => {
     library.removeBook(book);
     }
 
+const toggleRead = (event) => {
+    const book = event.currentTarget;
+    if (book.classList.contains('true')) {
+        book.classList.remove('true');
+    } else {
+        book.classList.add('true');
+    };
+    const bookTitle = book.parentNode.firstChild.textContent;
+    const targetBook = library.books.find((book) => book.title === bookTitle);
+    targetBook.toggleRead();
+    console.log(targetBook);
+}
 
 function displayBooks() {
     container.textContent = '';
